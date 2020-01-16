@@ -1,5 +1,5 @@
 # TypeScriptFAQ
-TypeScript常见问题
+TypeScript常见问题 欢迎在Issues提问与写出自己的解答
 
 1. 根据value获得key的类型/Get the type of key based on value
 ```ts
