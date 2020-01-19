@@ -24,3 +24,7 @@ function getProperty(obj: X, key: keyof X) {
     return obj[key].toString()
 }
 ```
+1. let a = [1, 2, 3] 转成 type A = [1, 2, 3]
+```ts
+const A = [1,2,3] as const
+```
