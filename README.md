@@ -31,3 +31,11 @@ function getProperty(obj: X, key: keyof X) {
 ```ts
 const A = [1,2,3] as const
 ```
+4. 怎么获取数组内的内容
+```ts
+//比如
+const t = ['a','b']
+//怎么得到type c 的类型为'a' | 'b'
+const t = ['a','b'] as const
+type C = (typeof t)[number]
+```
