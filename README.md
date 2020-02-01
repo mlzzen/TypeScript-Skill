@@ -39,3 +39,11 @@ const t = ['a','b']
 const t = ['a','b'] as const
 type C = (typeof t)[number]
 ```
+5. 如何限制this的类型
+```ts
+//可以通过定义一个接口
+interface Obj {
+    // 限定getName调用时的this类型
+    getName(this: Obj): string
+}
+```
