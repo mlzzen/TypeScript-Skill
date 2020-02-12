@@ -44,3 +44,12 @@ type C = (typeof t)[number]
 // 限制getName的this类型
 getName(this: Obj) {}
 ```
+6. Object.keys返回的类型不对
+```ts
+const a = {
+    b: 1,
+    c: '2'
+}
+
+const keys = Object.keys(a) as Array<keyof typeof a>
+```
