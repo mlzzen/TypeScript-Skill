@@ -53,3 +53,17 @@ const a = {
 
 const keys = Object.keys(a) as Array<keyof typeof a>
 ```
+7. 根据一个对象，得到对象所有value
+```ts
+//现有 
+const obj = {
+    a: 1,
+    b: 2,
+    c: 3
+}
+//想要得到
+type Obj = 1 | 2 | 3
+
+//写法
+type Obj = typeof obj[keyof typeof obj]
+```
