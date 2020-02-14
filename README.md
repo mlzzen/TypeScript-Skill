@@ -65,5 +65,42 @@ const obj = {
 type Obj = 1 | 2 | 3
 
 //写法
+const obj = {
+    a: 1,
+    b: 2,
+    c: 3
+} as const
+
 type Obj = typeof obj[keyof typeof obj]
 ```
+8. 根据一个对象，得到对象所有value，不在同一层级
+```ts
+//现有
+const a = {
+    a: 1,
+    b: 2,
+    c: 3,
+    x: {
+        d: 4
+    }
+} as const
+//想要得到
+type Value = 1 | 2 | 3 | 4
+
+//写法
+const a = {
+    a: 1,
+    b: 2,
+    c: 3,
+    x: {
+        d: 4
+    }
+} as const
+
+type ObjVal<T> = {
+    [K in keyof T]: T[K] extends object ? ObjVal<T[K]> : T[K]
+}[keyof T]
+
+type x = ObjVal<typeof a>
+
+``` 
