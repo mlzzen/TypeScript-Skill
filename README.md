@@ -1,7 +1,7 @@
 # TypeScriptFAQ
 TypeScript常见问题 欢迎在Issues提问与写出自己的解答
 
-1. 根据value获得key的类型
+## 根据value获得key的类型
 ```ts
 type S = {
     a: 1
@@ -11,7 +11,7 @@ type S = {
 type Get<S, V> = { [k in keyof S]: S[k] extends V ? k : never }[keyof S]
 type a = Get<S, 1>
 ```
-2. 对key限制为obj的属性名称
+## 对key限制为obj的属性名称
 ```ts
 interface X {
     a: number
@@ -27,11 +27,7 @@ function getProperty(obj: X, key: keyof X) {
     return obj[key]
 }
 ```
-3. 怎么把数组作为一个类型
-```ts
-const A = [1,2,3] as const
-```
-4. 怎么获取数组内的内容
+## 怎么获取数组内的内容
 ```ts
 //比如
 const t = ['a','b']
@@ -39,12 +35,12 @@ const t = ['a','b']
 const t = ['a','b'] as const
 type C = (typeof t)[number]
 ```
-5. 如何限制this的类型
+## 如何限制this的类型
 ```ts
 // 限制getName的this类型
 getName(this: Obj) {}
 ```
-6. Object.keys返回的类型不对
+## Object.keys返回的类型不对
 ```ts
 const a = {
     b: 1,
@@ -53,7 +49,7 @@ const a = {
 
 const keys = Object.keys(a) as Array<keyof typeof a>
 ```
-7. 根据一个对象，得到对象所有value
+## 根据一个对象，得到对象所有value
 ```ts
 //现有 
 const obj = {
@@ -73,7 +69,7 @@ const obj = {
 
 type Obj = typeof obj[keyof typeof obj]
 ```
-8. 根据一个对象，得到对象所有value，不在同一层级
+## 根据一个对象，得到对象所有value，不在同一层级
 ```ts
 //现有
 const a = {
