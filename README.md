@@ -98,5 +98,34 @@ type ObjVal<T> = {
 }[keyof T]
 
 type x = ObjVal<typeof a>
-
 ``` 
+## interface内部的key和value
+```ts
+interface A {
+    a: {
+        name: string;
+        age: number;
+    };
+    b: {
+        w: boolean;
+        h: symbol;
+    };
+}
+
+//want
+// type B = {
+//     name: string;
+//     age: number;
+//     w: boolean;
+//     h: symbol;
+// };
+
+//写法
+type GetKeys<U> = U extends Record<infer K, any> ? K : never;
+
+type UnionToIntersection<U> = {
+    [K in GetKeys<U>]: U extends Record<K, infer T> ? T : never;
+};
+
+type Z = UnionToIntersection<A[keyof A]>;
+```
