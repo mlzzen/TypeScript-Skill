@@ -13,6 +13,7 @@ type a = Get<S, 1>
 ```
 ## 对key限制为obj的属性名称
 ```ts
+//把getProperty 参数key限制为interface X的key，且根据参数推断出返回值类型
 interface X {
     a: number
     b: string
